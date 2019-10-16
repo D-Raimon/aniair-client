@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
@@ -10,6 +10,7 @@ import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import Shows from '../Shows/Shows'
+import Show from '../Shows/Show'
 
 class App extends Component {
   constructor () {
@@ -56,9 +57,14 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
-          <Route path="/shows" render={() => (
-            <Shows alert={this.alert} user={user} />
-          )} />
+          <Switch>
+            <Route exact path="/shows" render={() => (
+              <Shows alert={this.alert} user={user} />
+            )} />
+            <Route path="/shows/:id" render={(props) => (
+              <Show {...props} alert={this.alert} user={user} />
+            )} />
+          </Switch>
         </main>
         { /* <Footer /> */ }
       </Fragment>

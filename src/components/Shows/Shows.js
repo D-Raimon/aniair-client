@@ -1,40 +1,44 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect, Fragment } from 'react'
+
 import axios from 'axios'
-
 import apiUrl from '../../apiConfig'
-import Layout from '../shared/Layout'
+import { Link } from 'react-router-dom'
 
-class Shows extends Component {
-  constructor (props) {
-    super(props)
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
 
-    this.state = {
-      shows: []
-    }
-  }
+const Shows = (props) => {
+  const [shows, setShows] = useState([])
 
-  componentDidMount () {
+  useEffect(() => {
     axios(`${apiUrl}/shows`)
-      .then(res => this.setState({ shows: res.data.shows }))
+      .then(res => setShows(res.data.shows))
       .catch(console.error)
-  }
+  }, [])
 
-  render () {
-    const shows = this.state.shows.map(show => (
-      <li key={show._id}>
-        <Link to={`/shows/${show._id}`}>{show.name}</Link>
-      </li>
-    ))
+  const showsJsx = shows.map(show => (
+    <Col md="4" className="mb-5" key={show._id}>
+      <h6>{show.name.length > 24 ? show.name.substring(0, 24) + '..' : show.name}</h6>
+      <Link to={`/shows/${show._id}`}>
+        <img style={{ height: '300px', width: '210px' }} src={show.url} />
+      </Link>
+      <Button className="mt-1" size='sm' variant='danger'>Add To Watchlist</Button>
+    </Col>
+  ))
 
-    return (
-      <Layout>
-        <ul>
-          {shows}
-        </ul>
-      </Layout>
-    )
-  }
+  if (!shows[0]) return <p>Loading...</p>
+
+  return (
+    <Fragment>
+      <Container className="mt-4">
+        <Row>
+          {showsJsx}
+        </Row>
+      </Container>
+    </Fragment>
+  )
 }
 
 export default Shows
