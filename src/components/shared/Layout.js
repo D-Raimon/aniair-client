@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from './Header'
-import Footer from './Footer'
+// import Header from '../Header/Header'
+// import Footer from './Footer'
 
 const layoutStyles = {
   grid: {
@@ -19,11 +19,11 @@ const layoutStyles = {
 
 const Layout = props => (
   <div style={ layoutStyles.grid }>
-    <Header/>
+    { /* <Header/> */ }
     <main className="container" style={ layoutStyles.main }>
       {props.children}
     </main>
-    <Footer/>
+    { /* <Footer/> */ }
   </div>
 )
 
