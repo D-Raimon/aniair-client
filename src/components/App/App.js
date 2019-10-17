@@ -11,6 +11,8 @@ import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import Shows from '../Shows/Shows'
 import Show from '../Shows/Show'
+import CreateShow from '../Shows/CreateShow'
+import EditShow from '../Shows/EditShow'
 
 class App extends Component {
   constructor () {
@@ -61,10 +63,16 @@ class App extends Component {
             <Route exact path="/shows" render={() => (
               <Shows alert={this.alert} user={user} />
             )} />
-            <Route path="/shows/:id" render={(props) => (
+            <Route exact path="/shows/:id" render={(props) => (
               <Show {...props} alert={this.alert} user={user} />
             )} />
+            <Route path="/shows/:id/edit" render={(props) => (
+              <EditShow {...props} alert={this.alert} user={user} />
+            )} />
           </Switch>
+          <Route path="/create-show" render={(props) => (
+            <CreateShow {...props} alert={this.alert} user={user} />
+          )} />
         </main>
         { /* <Footer /> */ }
       </Fragment>

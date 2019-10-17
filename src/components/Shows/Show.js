@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button'
 
 import apiUrl from '../../apiConfig'
 // import Layout from '../shared/Layout'
+import messages from '../AutoDismissAlert/messages'
 
 const Show = (props) => {
   const [show, setShow] = useState(null)
@@ -23,30 +24,40 @@ const Show = (props) => {
       method: 'DELETE'
     })
       .then(() => setDeleted(true))
+      .then(() => props.alert({
+        heading: 'Deleted Successfully',
+        message: messages.onDeleteSuccess,
+        variant: 'success'
+      }))
       .catch(console.error)
   }
 
-  // if no movie then display loading to the user
+  // if no shows then display loading to the user, should change to a giphy eventually
   if (!show) {
     return <p>Loading...</p>
   }
   // if show is deleted then redirect to home
   if (deleted) {
-    return <Redirect to={
-      { pathname: '/', state: { msg: 'Show succesfully deleted!' } }
-    } />
+    return <Redirect to={'/shows'} />
   }
   // if user is an admin give admin rights
   if (props.user.admin === 'true') {
     return (
       <Fragment>
-        <h4>{show.name}</h4>
-        <p>Air Day: {show.airDay}</p>
-        <p>Directed by: {show.director}</p>
+        <div>
+          <img style={{ float: 'left' }} src={show.url}/>
+          <h4>{show.name}</h4>
+          <ul>
+            <li>Air Day: {show.airDay}</li>
+            <li>Episodes: {show.numOfEps}</li>
+          </ul>
+        </div>
+        <p>{show.longDescription}</p>
         <Button className="mt-1 mr-1" size='sm' variant='danger' onClick={destroy}>Delete Show</Button>
         <Link to={`/shows/${props.match.params.id}/edit`}>
           <Button className="mt-1 mr-1" size='sm' variant='danger'>Edit</Button>
         </Link>
+        <Button className="mt-1 mr-1" size='sm' variant='danger'>Add To Watchlist</Button>
         <Link to="/shows"><Button className="mt-1 mr-1" size='sm' variant='danger'>Back to All Shows</Button></Link>
       </Fragment>
     )
@@ -54,9 +65,16 @@ const Show = (props) => {
   // else display shows
   return (
     <Fragment>
-      <h4>{show.name}</h4>
-      <p>Air Day: {show.airDay}</p>
-      <p>Directed by: {show.director}</p>
+      <div>
+        <img style={{ float: 'left' }} src={show.url}/>
+        <h4>{show.name}</h4>
+        <ul>
+          <li>Air Day: {show.airDay}</li>
+          <li>Episodes: {show.numOfEps}</li>
+        </ul>
+      </div>
+      <p>{show.longDescription}</p>
+      <Button className="mt-1 mr-1" size='sm' variant='danger'>Add To Watchlist</Button>
       <Link to="/shows"><Button className="mt-1 mr-1" size='sm' variant='danger'>Back to All Shows</Button></Link>
     </Fragment>
   )
