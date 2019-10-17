@@ -13,6 +13,7 @@ import Shows from '../Shows/Shows'
 import Show from '../Shows/Show'
 import CreateShow from '../Shows/CreateShow'
 import EditShow from '../Shows/EditShow'
+import Watchlist from '../Watchlist/Watchlist'
 
 class App extends Component {
   constructor () {
@@ -72,6 +73,9 @@ class App extends Component {
           </Switch>
           <Route path="/create-show" render={(props) => (
             <CreateShow {...props} alert={this.alert} user={user} />
+          )} />
+          <Route path="/watchlist" render={(props) => (
+            <Watchlist {...props} alert={this.alert} user={user} />
           )} />
         </main>
         { /* <Footer /> */ }
