@@ -12,7 +12,7 @@ const EditShow = (props) => {
   useEffect(() => {
     axios(`${apiUrl}/shows/${props.match.params.id}`)
       .then(res => setShow(res.data.show))
-      .catch(console.error)
+      .catch()
   }, [])
 
   const handleChange = event => {
@@ -29,7 +29,7 @@ const EditShow = (props) => {
       data: { show }
     })
       .then(res => setUpdated(true))
-      .catch(console.error)
+      .catch()
   }
 
   if (updated) {

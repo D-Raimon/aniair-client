@@ -23,7 +23,7 @@ const CreateShow = (props) => {
       data: { show }
     })
       .then(res => setCreated(res.data.show._id))
-      .catch(console.error)
+      .catch()
   }
 
   if (created) {

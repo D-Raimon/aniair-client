@@ -15,7 +15,7 @@ const Shows = (props) => {
   useEffect(() => {
     axios(`${apiUrl}/shows`)
       .then(res => setShows(res.data.shows))
-      .catch(console.error)
+      .catch()
   }, [])
 
   const showsJsx = shows.map(show => (

@@ -23,7 +23,7 @@ const Watchlist = (props) => {
       }
     })
       .then(res => setWatchlist(res.data.watchlist))
-      .catch(console.error)
+      .catch()
   }, [])
 
   const showsJsx = watchlist.map(watchlist => (

@@ -15,7 +15,7 @@ const Show = (props) => {
   useEffect(() => {
     axios(`${apiUrl}/shows/${props.match.params.id}`)
       .then(res => setShow(res.data.show))
-      .catch(console.error)
+      .catch()
   }, [])
 
   const destroy = () => {
@@ -29,7 +29,7 @@ const Show = (props) => {
         message: messages.onDeleteSuccess,
         variant: 'success'
       }))
-      .catch(console.error)
+      .catch()
   }
 
   // const addShow = () => {
