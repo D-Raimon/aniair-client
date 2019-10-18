@@ -4,7 +4,9 @@ import Navbar from 'react-bootstrap/Navbar'
 
 const authenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#watchlist">Watchlist</Nav.Link>
+    {/* temporarily remove watchlist and grant admin access to all users */}
+    {/* <Nav.Link href="#watchlist">Watchlist</Nav.Link> */}
+    <Nav.Link href="#create-show">Create A Show</Nav.Link>
     <Nav.Link href="#shows">Shows</Nav.Link>
     <Nav.Link href="#change-password">Change Password</Nav.Link>
     <Nav.Link href="#sign-out">Sign Out</Nav.Link>

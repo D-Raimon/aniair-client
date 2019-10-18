@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
+// import Button from 'react-bootstrap/Button'
 
 const Shows = (props) => {
   const [shows, setShows] = useState([])
@@ -24,7 +24,7 @@ const Shows = (props) => {
       <Link to={`/shows/${show._id}`}>
         <img style={{ height: '300px', width: '210px' }} src={show.url} />
       </Link>
-      <Button className="mt-1" size='sm' variant='danger'>Add To Watchlist</Button>
+      {/* <Button className="mt-1" size='sm' variant='danger'>Add To Watchlist</Button> */}
     </Col>
   ))
 
