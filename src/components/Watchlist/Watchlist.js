@@ -5,8 +5,10 @@ import apiUrl from '../../apiConfig'
 import { Link } from 'react-router-dom'
 
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
+import Tab from 'react-bootstrap/Tab'
 import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
+import Nav from 'react-bootstrap/Nav'
 import Button from 'react-bootstrap/Button'
 
 const Watchlist = (props) => {
@@ -25,12 +27,12 @@ const Watchlist = (props) => {
   }, [])
 
   const showsJsx = watchlist.map(watchlist => (
-    <Col md="4" className="mb-5" key={watchlist._id}>
+    <Fragment key={watchlist._id}>
       <Link to={`/shows/${watchlist.showId}`}>
-        <p>{watchlist.name}</p>
+        <li>{watchlist.name}</li>
       </Link>
-      <Button className="mt-1" size='sm' variant='danger'>Add To Watchlist</Button>
-    </Col>
+      <Button className="mt-1" size='sm' variant='dark'>Remove Watchlist</Button>
+    </Fragment>
   ))
 
   if (!watchlist[0]) return <p>Add some shows to create a watchlist!</p>
@@ -38,24 +40,63 @@ const Watchlist = (props) => {
   return (
     <Fragment>
       <Container className="mt-4">
-        <Row>
-          {showsJsx}
-        </Row>
+        <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+          <Row>
+            <Col sm={3}>
+              <Nav variant="pills" className="flex-column">
+                <Nav.Item>
+                  <Nav.Link variant="danger" eventKey="sunday">Sunday</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="monday">Monday</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="tuesday">Tuesday</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="wednesday">Wednesday</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="thursday">Thursday</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="friday">Friday</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="saturday">Saturday</Nav.Link>
+                </Nav.Item>
+              </Nav>
+            </Col>
+            <Col sm={9}>
+              <Tab.Content>
+                <Tab.Pane eventKey="sunday">
+                  {showsJsx}
+                </Tab.Pane>
+                <Tab.Pane eventKey="monday">
+                  {showsJsx}
+                </Tab.Pane>
+                <Tab.Pane eventKey="tuesday">
+                  {showsJsx}
+                </Tab.Pane>
+                <Tab.Pane eventKey="wednesday">
+                  {showsJsx}
+                </Tab.Pane>
+                <Tab.Pane eventKey="thursday">
+                  {showsJsx}
+                </Tab.Pane>
+                <Tab.Pane eventKey="friday">
+                  {showsJsx}
+                </Tab.Pane>
+                <Tab.Pane eventKey="saturday">
+                  {showsJsx}
+                </Tab.Pane>
+              </Tab.Content>
+            </Col>
+          </Row>
+        </Tab.Container>
       </Container>
     </Fragment>
   )
 }
 
 export default Watchlist
-// code to represent day of week on a bootstrap card
-// <Card bg="danger" text="white" style={{ width: '18rem' }}>
-//   <Card.Header>Header</Card.Header>
-//   <Card.Body>
-//     <Card.Title>Danger Card Title</Card.Title>
-//     <Card.Text>
-//       Some quick example text to build on the card title and make up the bulk
-//       of the card's content.
-//     </Card.Text>
-//   </Card.Body>
-// </Card>
-// <br />
