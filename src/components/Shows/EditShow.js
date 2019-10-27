@@ -26,7 +26,10 @@ const EditShow = (props) => {
     axios({
       url: `${apiUrl}/shows/${props.match.params.id}`,
       method: 'PATCH',
-      data: { show }
+      data: { show },
+      headers: {
+        'Authorization': `Token token=${props.user.token}`
+      }
     })
       .then(res => setUpdated(true))
       .catch()

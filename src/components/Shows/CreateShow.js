@@ -20,10 +20,13 @@ const CreateShow = (props) => {
     axios({
       url: `${apiUrl}/shows`,
       method: 'POST',
-      data: { show }
+      data: { show },
+      headers: {
+        'Authorization': `Token token=${props.user.token}`
+      }
     })
       .then(res => setCreated(res.data.show._id))
-      .catch()
+      .catch(() => props.alert({ heading: 'oh no', message: 'something went wrong', variant: 'danger' }))
   }
 
   if (created) {

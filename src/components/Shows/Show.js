@@ -21,7 +21,10 @@ const Show = (props) => {
   const destroy = () => {
     axios({
       url: `${apiUrl}/shows/${props.match.params.id}`,
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Token token=${props.user.token}`
+      }
     })
       .then(() => setDeleted(true))
       .then(() => props.alert({
