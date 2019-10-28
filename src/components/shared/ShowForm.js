@@ -38,6 +38,7 @@ const ShowForm = ({ show, handleSubmit, handleChange }) => {
         <Form.Label>Number of Episodes</Form.Label>
         <Form.Control
           type="number"
+          min="0"
           placeholder="12"
           name="numOfEps"
           onChange={handleChange}
