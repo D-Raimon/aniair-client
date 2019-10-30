@@ -63,7 +63,7 @@ const Show = (props) => {
         </Link>
         {/* <Button className="mt-1 mr-1" size='sm' variant='danger' onClick={addShow}>Add To Watchlist</Button> */}
         <Link to="/shows"><Button className="mt-1 mr-1 mb-3" size='sm' variant='danger'>Back to All Shows</Button></Link>
-        <div style={{ alignContent: 'center' }}>
+        <div style={{ marginBottom: '3rem', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
           <ReactPlayer url={show.trailer} controls="true" />
         </div>
       </Fragment>
@@ -87,7 +87,7 @@ const Show = (props) => {
         </Link>
         {/* <Button className="mt-1 mr-1" size='sm' variant='danger' onClick={addShow}>Add To Watchlist</Button> */}
         <Link to="/shows"><Button className="mt-1 mr-1 mb-3" size='sm' variant='danger'>Back to All Shows</Button></Link>
-        <div style={{ alignContent: 'center' }}>
+        <div style={{ marginBottom: '3rem', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
           <ReactPlayer url={show.trailer} controls="true" />
         </div>
       </Fragment>
