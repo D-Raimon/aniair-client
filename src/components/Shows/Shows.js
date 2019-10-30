@@ -19,7 +19,7 @@ const Shows = (props) => {
   }, [])
 
   const showsJsx = shows.map(show => (
-    <Col md="4" className="mb-5" key={show._id}>
+    <Col md="3" className="mb-5" key={show._id}>
       <h6>{show.name.length > 24 ? show.name.substring(0, 24) + '..' : show.name}</h6>
       <Link to={`/shows/${show._id}`}>
         <img style={{ height: '300px', width: '210px' }} src={show.url} />
