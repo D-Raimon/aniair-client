@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
+import ReactPlayer from 'react-player'
 
 import Button from 'react-bootstrap/Button'
 
@@ -56,12 +57,15 @@ const Show = (props) => {
           </ul>
         </div>
         <p>{show.longDescription}</p>
-        <Button className="mt-1 mr-1" size='sm' variant='danger' onClick={destroy}>Delete Show</Button>
+        <Button className="mt-1 mr-1 mb-3" size='sm' variant='danger' onClick={destroy}>Delete Show</Button>
         <Link to={`/shows/${props.match.params.id}/edit`}>
-          <Button className="mt-1 mr-1" size='sm' variant='danger'>Edit</Button>
+          <Button className="mt-1 mr-1 mb-3" size='sm' variant='danger'>Edit</Button>
         </Link>
         {/* <Button className="mt-1 mr-1" size='sm' variant='danger' onClick={addShow}>Add To Watchlist</Button> */}
-        <Link to="/shows"><Button className="mt-1 mr-1" size='sm' variant='danger'>Back to All Shows</Button></Link>
+        <Link to="/shows"><Button className="mt-1 mr-1 mb-3" size='sm' variant='danger'>Back to All Shows</Button></Link>
+        <div style={{ alignContent: 'center' }}>
+          <ReactPlayer url={show.trailer} controls="true" />
+        </div>
       </Fragment>
     )
   }
@@ -77,12 +81,15 @@ const Show = (props) => {
           </ul>
         </div>
         <p>{show.longDescription}</p>
-        <Button className="mt-1 mr-1" size='sm' variant='danger' onClick={destroy}>Delete Show</Button>
+        <Button className="mt-1 mr-1 mb-3" size='sm' variant='danger' onClick={destroy}>Delete Show</Button>
         <Link to={`/shows/${props.match.params.id}/edit`}>
-          <Button className="mt-1 mr-1" size='sm' variant='danger'>Edit</Button>
+          <Button className="mt-1 mr-1 mb-3" size='sm' variant='danger'>Edit</Button>
         </Link>
         {/* <Button className="mt-1 mr-1" size='sm' variant='danger' onClick={addShow}>Add To Watchlist</Button> */}
-        <Link to="/shows"><Button className="mt-1 mr-1" size='sm' variant='danger'>Back to All Shows</Button></Link>
+        <Link to="/shows"><Button className="mt-1 mr-1 mb-3" size='sm' variant='danger'>Back to All Shows</Button></Link>
+        <div style={{ alignContent: 'center' }}>
+          <ReactPlayer url={show.trailer} controls="true" />
+        </div>
       </Fragment>
     )
   }
@@ -99,7 +106,11 @@ const Show = (props) => {
       </div>
       <p>{show.longDescription}</p>
       {/* <Button className="mt-1 mr-1" size='sm' variant='danger'>Add To Watchlist</Button> */}
-      <Link to="/shows"><Button className="mt-1 mr-1" size='sm' variant='danger'>Back to All Shows</Button></Link>
+      <Link to="/shows"><Button className="mt-1 mr-1 mb-3" size='sm' variant='danger'>Back to All Shows</Button></Link>
+      <br/>
+      <div style={{ marginBottom: '3rem', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+        <ReactPlayer url={show.trailer} controls="true" />
+      </div>
     </Fragment>
   )
 }
